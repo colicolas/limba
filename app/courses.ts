@@ -1,0 +1,12 @@
+import {lessons,units,type Lesson} from './curriculum';
+import {examples} from './examples';
+import {stops} from './story';
+import {italianLessons,italianUnits,italianExamples} from './italian/curriculum';
+import {italianStops} from './italian/story';
+export type Language='ro'|'it';
+export type Course={code:Language;name:string;country:string;base:string;speechLocale:string;lessons:Lesson[];units:typeof units;stops:typeof stops;examples:typeof examples;cast:{name:string;role:string}[];storyTitle:string;storyDescription:string;literature:{title:string;author:string;text:string;url:string;lessonIndex:number}};
+export const courses:Record<Language,Course>={
+ro:{code:'ro',name:'Romanian',country:'Romania',base:'',speechLocale:'ro-RO',lessons,units,stops,examples,cast:[{name:'Ana',role:'Studies architecture; keeps the route map.'},{name:'Radu',role:'Takes photographs; looks for the story behind each place.'},{name:'Maria',role:'Keeps the notebook; asks about words and books.'}],storyTitle:'Ana, Radu & Maria',storyDescription:'Three friends keep a shared notebook as they travel through Romania. Each lesson continues their story, using the grammar introduced so far. Each chapter includes a history and culture section.',literature:{title:'Somnoroase păsărele…',author:'Mihai Eminescu · Opening stanza',text:'Somnoroase păsărele\nPe la cuiburi se adună,\nSe ascund în rămurele —\nNoapte bună!',url:'https://ro.wikisource.org/wiki/Somnoroase_p%C4%83s%C4%83rele...',lessonIndex:53}},
+it:{code:'it',name:'Italian',country:'Italy',base:'/italian',speechLocale:'it-IT',lessons:italianLessons,units:italianUnits,stops:italianStops,examples:italianExamples,cast:[{name:'Sofia',role:'Studies places and public space; keeps the route map.'},{name:'Luca',role:'Collects photographs and sounds, with permission.'},{name:'Giulia',role:'Keeps the notebook; connects words, voices, and sources.'}],storyTitle:'Sofia, Luca & Giulia',storyDescription:'Three friends travel through Italy collecting places, words, and voices. The story grows into a cultural inquiry, with AP themes woven into the later chapters.',literature:{title:'Nel mezzo del cammin…',author:'Dante Alighieri · Inferno I, lines 1–2',text:'Nel mezzo del cammin di nostra vita\nmi ritrovai per una selva oscura',url:'https://it.wikisource.org/wiki/Divina_Commedia/Inferno/Canto_I',lessonIndex:41}}
+};
+export function getCourse(language:Language='ro'){return courses[language];}
